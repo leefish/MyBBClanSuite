@@ -47,7 +47,7 @@ function clansuite_meta()
 	}
 		
 	// custom plugin hooks!
-	$plugins->run_hooks_by_ref("admin_forum_menu", $sub_menu);
+	//$plugins->run_hooks_by_ref("admin_forum_menu", $sub_menu);
 	
 	$page->add_menu_item("Clan Suite", "clansuite", "index.php?module=clansuite", 81, $sub_menu);
 

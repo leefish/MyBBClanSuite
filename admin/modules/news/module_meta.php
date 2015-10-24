@@ -67,7 +67,7 @@ function news_action_handler($action)
 	}
 	
 	// more custom plugin hooks!
-	$plugins->run_hooks_by_ref("admin_news_action_handler", $actions);
+	//$plugins->run_hooks_by_ref("admin_news_action_handler", $actions);
 
 	if($page->active_action == "manage" || $page->active_action == "addnew")
 	{

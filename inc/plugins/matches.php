@@ -42,7 +42,7 @@ function matches_info()
 		"author"		=> "Benjamin Ely",
 		"authorsite"	=> "http://www.c4powered.co.uk",
 		"version"		=> "0.1",
-		"compatibility" => "16*"
+		"compatibility" => "1*"
 	);
 }
 

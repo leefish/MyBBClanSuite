@@ -31,7 +31,7 @@ function servers_info()
 		"author"		=> "Mini`",
 		"authorsite"	=> "http://mybb.com",
 		"version"		=> "0.1",
-		"compatibility" => "16*"
+		"compatibility" => "1*"
 	);
 }
 

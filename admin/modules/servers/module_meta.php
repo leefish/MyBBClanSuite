@@ -66,7 +66,7 @@ function servers_action_handler($action)
 		$page->active_action = $actions[$action]['active'];
 	}
 	// more custom plugin hooks!
-	$plugins->run_hooks_by_ref("admin_servers_action_handler", $actions);
+	//$plugins->run_hooks_by_ref("admin_servers_action_handler", $actions);
 	
 	if($page->active_action == "manage" || $page->active_action == "addserver")
 	{

@@ -82,6 +82,7 @@ echo $form->generate_hidden_field("save", "save", array('id' => "save"))."\n";
 
 $form_container->output_row("Username", "The username of the user you want to add to the team", $form->generate_text_box('username', $username, array('id' => 'username')), 'username');
 
+
 $query = $db->simple_select("rosterteams", "*", "1=1");
 while($team = $db->fetch_array($query))
 {
@@ -101,7 +102,43 @@ $buttons[] = $form->generate_submit_button("Save");
 // wrap up the form
 $form->output_submit_wrapper($buttons);
 $form->end();
-
+echo '
+<link rel="stylesheet" href="../jscripts/select2/select2.css">
+<script type="text/javascript" src="../jscripts/select2/select2.min.js?ver=1804"></script>
+<script type="text/javascript">
+<!--
+$("#username").select2({
+	placeholder: "'.$lang->search_for_a_user.'",
+	minimumInputLength: 3,
+	maximumSelectionSize: 3,
+	multiple: false,
+	ajax: { // instead of writing the function to execute the request we use Select2\'s convenient helper
+		url: "../xmlhttp.php?action=get_users",
+		dataType: \'json\',
+		data: function (term, page) {
+			return {
+				query: term // search term
+			};
+		},
+		results: function (data, page) { // parse the results into the format expected by Select2.
+			// since we are using custom formatting functions we do not need to alter remote JSON data
+			return {results: data};
+		}
+	},
+	initSelection: function(element, callback) {
+		var query = $(element).val();
+		if (query !== "") {
+			$.ajax("../xmlhttp.php?action=get_users&getone=1", {
+				data: {
+					query: query
+				},
+				dataType: "json"
+			}).done(function(data) { callback(data); });
+		}
+	}
+});
+// -->
+</script>';
 // end the page
 $page->output_footer();
 
