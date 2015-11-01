@@ -117,7 +117,7 @@ function news_templates()
 <body>
 
 {$header}
-
+<div> SQL INJECTION VULNERABLE. Do not use on a live site</div>
 {$news_post}
 
 {$numbers}
@@ -261,5 +261,3 @@ function news_templates()
 	
 	$db->insert_query("templates", $temp);
 }
-
-?>
